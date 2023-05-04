@@ -1,0 +1,235 @@
+$backgrounb_main: #F6F6F6;
+$backgrounb_modal: #FFFFFF;
+$table_hover: #DEDEDE;
+$border_gray: #ced4da;
+$border_blue: #8ABDEB;
+$text_dark: #343a40;
+$text_light: #ffffff;
+$text_placeholder: #777777;
+$text_input: #494949;
+$close_blue: #4F6AA1;
+$close_gray: #828282;
+$blue: #007bff;
+$blue_hover: #0069d9;
+$green: #28a745;
+$green_hover: #218838;
+$yellow: #ffc107;
+$yellow_hover: #e0a800;
+$red: #dc3545;
+$red_hover: #c82333;
+
+$blue_focus: rgba(38, 143, 255, 0.3);
+$green_focus: rgba(72, 180, 97, 0.5);
+$yellow_focus: rgba(222, 170, 12, 0.5);
+$red_focus: rgba(225, 83, 97, 0.5);
+
+.main {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 10px 60px;
+    background-color: $backgrounb_main;
+    font-family: 'Roboto', sans-serif;
+    color: $text_dark;
+}
+
+.contacts {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.header {
+    height: 55px;
+    border-bottom: 1px solid $border_gray;
+    &__h1 {
+        font-size: 2em;
+        color: $red;
+    }
+}
+
+.search {
+    height: 70px;
+    border-bottom: 1px solid $border_gray;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    &__label {
+        width: 100%;
+        position: relative;
+    }
+}
+
+.input {
+    width: 100%;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid $border_gray;
+    border-radius: 4px;
+    outline: none;
+    color: $text_input;
+    &::placeholder {
+        color: $text_placeholder;
+    }
+    &:focus {
+        border-color: $border_blue;
+        box-shadow: 0 0 0 3px $blue_focus;
+    }
+    &_wrong {
+        border-color: $red;
+        &:focus {
+            border-color: $red;
+        }
+    }
+}
+
+.btn {
+    height: 40px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    color: $text_light;
+    font-size: 1em;
+    &_green {
+        width: 175px;
+        background-color: $green;
+        &:hover {
+            background-color: $green_hover;
+        }
+        &:focus {
+            box-shadow: 0 0 0 3px $green_focus;
+        }
+    }
+    &_yellow {
+        background-color: $yellow;
+        color: $text_dark;
+        &:hover {
+            background-color: $yellow_hover;
+        }
+        &:focus {
+            box-shadow: 0 0 0 3px $yellow_focus;
+        }
+    }
+    &_red {
+        background-color: $red;
+        &:hover {
+            background-color: $red_hover;
+        }
+        &:focus {
+            box-shadow: 0 0 0 3px $red_focus;
+        }
+    }
+    &_blue {
+        background-color: $blue;
+        &:hover {
+            background-color: $blue_hover;
+        }
+        &:focus {
+            box-shadow: 0 0 0 3px $blue_focus;
+        }
+    }
+}
+
+.btnClose {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    font-size: 28px;
+    color: $close_gray;
+    &_clear {
+        color: $close_blue;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+    &:focus {
+        outline: 4px solid $blue_focus;
+        outline-offset: -5px;
+    }
+}
+
+.btnSort {
+    height: 30px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    text-align: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    // &:focus {
+    //     outline: 4px solid $border_gray;
+    // }
+}
+
+.book {
+    width: 100%;
+    th {
+        min-width: 160px;
+        height: 50px;
+        border-bottom: 2px solid $border_gray;
+        text-align: left;
+    }
+    td {
+        height: 60px;
+        border-bottom: 1px solid $border_gray;
+    }
+    th:first-child, td:first-child {
+        padding-left: 10px;
+    }
+    th:last-child {
+        min-width: 148px;
+        width: 148px;
+    }
+    tr:hover td {
+        background-color: $table_hover;
+    }
+    &__sort {
+        color: inherit;
+    }
+}
+
+.modal__overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal {
+    width: 500px;
+    height: 330px;
+    margin: 30px auto;
+    background-color: $backgrounb_modal;
+    border-radius: 5px;
+    &__header {
+        height: 60px;
+        padding: 15px;
+        border-bottom: 1px solid $border_gray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__main {
+        height: 200px;
+        padding: 0 30px;
+        border-bottom: 1px solid $border_gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    &__footer {
+        height: 70px;
+        padding: 0 15px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}

@@ -1,0 +1,89 @@
+<main class="main">
+    <section class="contacts">
+        <header class="header">
+            <h1 class="header__h1">My phone book!</h1>
+        </header>
+        <div class="search">
+            <label class="search__label">
+                <input type="text" class="input" placeholder="search text goes here" [(ngModel)]="searchText">
+                <button class="btnClose btnClose_clear" (click)="clearInput()">
+                    &#215;
+                </button>
+            </label>
+            <button class="btn btn_green" (click)="addContact()">
+                add phone
+            </button>
+        </div>
+        <table class="book">
+            <thead>
+                <th>
+                    <button class="btnSort" (click)="changeDirection(nameField[0])">
+                        First name
+                        <span class="book__sort" *ngIf="sortDirection.name === 'fname'">
+                            {{sortDirection.direction ? '&#9660;' : '&#9650;'}}
+                        </span>
+                    </button>
+                </th>
+                <th>
+                    <button class="btnSort" (click)="changeDirection(nameField[1])">
+                        Last name
+                        <span class="book__sort" *ngIf="sortDirection.name === 'lname'">
+                            {{sortDirection.direction ? '&#9660;' : '&#9650;'}}
+                        </span>
+                    </button>
+                </th>
+                <th>
+                    <button class="btnSort" (click)="changeDirection(nameField[2])">
+                        Number
+                        <span class="book__sort" *ngIf="sortDirection.name === 'number'">
+                            {{sortDirection.direction ? '&#9660;' : '&#9650;'}}
+                        </span>
+                    </button>
+                </th>
+                <th>edit</th>
+                <th>delete</th>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let item of phoneBook | search:searchText | sort:sortDirection.name:sortDirection.direction; index as i">
+                    <td>{{ item.fname }}</td>
+                    <td>{{ item.lname }}</td>
+                    <td>{{ item.number }}</td>
+                    <td>
+                        <button class="btn btn_yellow" (click)="editContact(i)">
+                            edit
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn_red" (click)="deleteContact(i)">
+                            delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal__overlay" *ngIf="isModal" (click)="clickOverlay($event)">
+            <div class="modal">
+                <div class="modal__header">
+                    <h2>Add phone</h2>
+                    <button class="btnClose" (click)="closeModal()">
+                        &#215;
+                    </button>
+                </div>
+                <div class="modal__main">
+                    <input type="text" class="input" placeholder="first name goes here" [(ngModel)]="newContact.fname"
+                        [ngClass]="{'input_wrong': inputWrong.fname}">
+                    <input type="text" class="input" placeholder="second name goes here" [(ngModel)]="newContact.lname"
+                        [ngClass]="{'input_wrong': inputWrong.lname}">
+                    <input type="text" class="input" placeholder="number phone goes here"
+                        [(ngModel)]="newContact.number" [ngClass]="{'input_wrong': inputWrong.number}">
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn_blue" (click)="saveContact()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
